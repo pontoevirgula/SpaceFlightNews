@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <plurals name="numberOfLaunchEvents">
+        <item quantity="one">%d launch event</item>
+        <item quantity="other">%d launch events</item>
+    </plurals>
+    <string name="app_name">Space News</string>
+    <string name="HomeToolbarTitle">Noticias recentes</string>
+</resources>

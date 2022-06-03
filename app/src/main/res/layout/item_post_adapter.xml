@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="post"
+            type="com.chslcompany.spaceflightnews.data.model.Post" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/item_card_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:elevation="3dp"
+            app:cardBackgroundColor="@color/medium_gray"
+            app:cardCornerRadius="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/item_image_iv"
+                    postImage="@{post}"
+                    android:layout_width="match_parent"
+                    android:layout_height="160dp"
+                    android:scaleType="centerCrop"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:src="@tools:sample/backgrounds/scenic" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/item_title_tv"
+                    style="@style/ItemTitle"
+                    postTitle="@{post}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/item_image_iv"
+                    tools:text="Texto meramente descritivo 1" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/item_summary_tv"
+                    style="@style/ItemBodyText"
+                    postSummary="@{post}"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/item_title_tv"
+                    tools:text="Texto meramente descritivo 2 " />
+
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/item_published_ch"
+                    style="@style/ChipText"
+                    postPublishedDate="@{post}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:chipBackgroundColor="@color/gradient_cherry_dark"
+                    app:layout_constraintStart_toStartOf="@id/item_summary_tv"
+                    app:layout_constraintTop_toBottomOf="@id/item_summary_tv"
+                    tools:text="Texto meramente descritivo 3" />
+
+                <!-- A visibilidade desse chip é controlada pelo BindingAdapter -->
+                <com.google.android.material.chip.Chip
+                    android:id="@+id/item_launch_ch"
+                    style="@style/ChipText"
+                    itemHasLaunch="@{post}"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    app:chipBackgroundColor="@color/gradient_cherry_dark"
+                    app:chipIcon="@drawable/ic_rocket"
+                    app:chipIconTint="@color/off_white"
+                    app:layout_constraintEnd_toStartOf="@id/item_favourite_btn"
+                    app:layout_constraintStart_toEndOf="@id/item_published_ch"
+                    app:layout_constraintTop_toBottomOf="@id/item_summary_tv"
+                    tools:text="1 launch event(s)" />
+
+
+                <androidx.appcompat.widget.AppCompatImageButton
+                    android:id="@+id/item_favourite_btn"
+                    android:layout_width="@dimen/image_button_size"
+                    android:layout_height="@dimen/image_button_size"
+                    android:background="?attr/actionBarItemBackground"
+                    android:src="@drawable/ic_favorite_24"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:tint="@color/design_default_color_on_primary" />
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+        </com.google.android.material.card.MaterialCardView>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
