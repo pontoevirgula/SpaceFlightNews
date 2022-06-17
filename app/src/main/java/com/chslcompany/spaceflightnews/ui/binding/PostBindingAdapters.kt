@@ -44,12 +44,6 @@ fun ImageView.setImage(post: Post?) {
     }
 }
 
-/**
- * Esse adapter mostra o Chip se o post tiver um lançamento
- * associado; senão, oculta o Chip. O texto é formatado usando
- * uma Plural String para selecionar o string correto (no singular
- * ou no plural conforme a quantidade de lançamentos).
- */
 @BindingAdapter("itemHasLaunch")
 fun Chip.setHasLaunch(post: Post?) {
     post?.run {
@@ -63,12 +57,6 @@ fun Chip.setHasLaunch(post: Post?) {
     }
 }
 
-
-
-/**
- * Esse adapter converte a data em formato String usando a classe Instant
- * e depois formata para o padrão dd-mm-aaaa.
- */
 @RequiresApi(Build.VERSION_CODES.O)
 @BindingAdapter("postPublishedDate")
 fun Chip.setUpdate(post: Post?) {

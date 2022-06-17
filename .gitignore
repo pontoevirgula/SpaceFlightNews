@@ -6,6 +6,11 @@
 /.idea/modules.xml
 /.idea/workspace.xml
 /.idea/navEditor.xml
+/.idea/vcs.xml
+/.idea/sonarlint
+/.idea/misc.xml
+/.idea/gradle.xml
+/.idea/compiler.xml
 /.idea/assetWizardSettings.xml
 .DS_Store
 /build

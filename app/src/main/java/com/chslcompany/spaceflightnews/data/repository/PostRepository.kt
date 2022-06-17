@@ -4,5 +4,6 @@ import com.chslcompany.spaceflightnews.data.model.Post
 import kotlinx.coroutines.flow.Flow
 
 interface PostRepository {
-    suspend fun listPosts() : Flow<List<Post>>
+    fun listPosts() : Flow<List<Post>>
+    //fun getFlowPosts(): Flow<List<Post>>
 }

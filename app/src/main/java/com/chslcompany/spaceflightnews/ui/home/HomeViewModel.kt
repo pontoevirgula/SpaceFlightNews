@@ -5,14 +5,12 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.chslcompany.spaceflightnews.data.model.Post
-import com.chslcompany.spaceflightnews.data.repository.MockAPIService
 import com.chslcompany.spaceflightnews.data.repository.PostRepository
-import com.chslcompany.spaceflightnews.data.repository.PostRepositoryImpl
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.launch
 
-class HomeViewModel : ViewModel() {
-    private val repository : PostRepository = PostRepositoryImpl(MockAPIService)
+class HomeViewModel(private val repository: PostRepository) : ViewModel() {
+    //  private val repository: PostRepository = PostRepositoryImpl(MockAPIService)
 
     private val _listPost = MutableLiveData<List<Post>>()
     val listPost: LiveData<List<Post>>
@@ -22,15 +20,22 @@ class HomeViewModel : ViewModel() {
         fetchPosts()
     }
 
-    /**
-     * Esse método coleta o fluxo do repositorio e atribui
-     * o seu valor ao campo _listPost
-     */
-    private fun fetchPosts() {
+//    private fun fetchPosts() {
+//        viewModelScope.launch {
+//            repository.getFlowPosts()
+//                .catch { e ->
+//                    if (e is NullPointerException) throw e
+//                    else emit(emptyList())
+//                }
+//                .collect { posts ->
+//                    _listPost.value = posts
+//                }
+//        }
+//    }
+
+    private fun fetchPosts(){
         viewModelScope.launch {
-           repository.listPosts().collect {
-               _listPost.value = it
-           }
+            repository.listPosts().collect{_listPost.value = it}
         }
     }
 

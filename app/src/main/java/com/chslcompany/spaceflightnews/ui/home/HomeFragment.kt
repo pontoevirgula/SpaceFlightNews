@@ -15,6 +15,7 @@ class HomeFragment : Fragment() {
     private val binding: HomeFragmentBinding by lazy {
         HomeFragmentBinding.inflate(layoutInflater)
     }
+    private val adapter by lazy { PostListAdapter() }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -22,18 +23,18 @@ class HomeFragment : Fragment() {
     ): View {
         initBinding()
         initRecyclerView()
+        observeViewModel()
         return binding.root
     }
 
     private fun initRecyclerView() {
-
-        val adapter = PostListAdapter()
         binding.homeRv.adapter = adapter
+    }
 
+    private fun observeViewModel() =
         viewModel.listPost.observe(viewLifecycleOwner) {
             adapter.submitList(it)
         }
-    }
 
     private fun initBinding() {
         binding.viewModel = viewModel

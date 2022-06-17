@@ -2,16 +2,28 @@ package com.chslcompany.spaceflightnews.data.repository
 
 import com.chslcompany.spaceflightnews.data.model.Launch
 import com.chslcompany.spaceflightnews.data.model.Post
+import com.chslcompany.spaceflightnews.data.service.SpaceFlightNewsService
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class PostRepositoryImpl(private val service: MockAPIService) : PostRepository {
-    override suspend fun listPosts(): Flow<List<Post>> = flow {
-        emit(service.listPosts)
+class PostRepositoryImpl(private val service: SpaceFlightNewsService) : PostRepository {
+//    private val posts: Flow<List<Post>> = flow {
+//        while (true) {
+//            val post = listPosts()
+//            emit(post)
+//        }
+//    }
+
+    //override fun getFlowPosts() = posts
+
+    override fun listPosts(): Flow<List<Post>> = flow {
+        emit(service.getListPost())
     }
+
 }
 
-object MockAPIService{
+//TODO salvar pra Testes
+object MockAPIService {
     val listPosts = listOf(
         Post(
             id = 12783,
