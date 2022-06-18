@@ -5,3 +5,4 @@ Projeto que acessa api Space Flight News
 -  Arquitetura MVVM
 -  Retrofit2
 -  Coroutines
+-  State Pattern
