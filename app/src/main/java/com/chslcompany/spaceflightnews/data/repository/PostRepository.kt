@@ -5,5 +5,4 @@ import kotlinx.coroutines.flow.Flow
 
 interface PostRepository {
     fun listPosts() : Flow<List<Post>>
-    //fun getFlowPosts(): Flow<List<Post>>
 }

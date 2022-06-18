@@ -5,8 +5,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.chslcompany.spaceflightnews.core.PostState
 import com.chslcompany.spaceflightnews.databinding.HomeFragmentBinding
 import com.chslcompany.spaceflightnews.ui.adapter.PostListAdapter
+import com.google.android.material.snackbar.Snackbar
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class HomeFragment : Fragment() {
@@ -23,7 +25,8 @@ class HomeFragment : Fragment() {
     ): View {
         initBinding()
         initRecyclerView()
-        observeViewModel()
+        observeSnackBarLiveData()
+        observePostStateLiveData()
         return binding.root
     }
 
@@ -31,10 +34,34 @@ class HomeFragment : Fragment() {
         binding.homeRv.adapter = adapter
     }
 
-    private fun observeViewModel() =
-        viewModel.listPost.observe(viewLifecycleOwner) {
-            adapter.submitList(it)
+    private fun observePostStateLiveData() =
+        viewModel.listPost.observe(viewLifecycleOwner) { state ->
+            when (state) {
+                PostState.Loading -> {
+                    viewModel.showProgressBar()
+                }
+                is PostState.Success -> {
+                    viewModel.hideProgressBar()
+                    adapter.submitList(state.result)
+                }
+                is PostState.Error -> {
+                    viewModel.hideProgressBar()
+                }
+            }
         }
+
+    private fun observeSnackBarLiveData() =
+        viewModel.snackBar.observe(viewLifecycleOwner) { messageError ->
+            if (!messageError.isNullOrEmpty()) {
+                Snackbar.make(
+                    binding.root,
+                    messageError,
+                    Snackbar.LENGTH_LONG
+                ).show()
+                viewModel.hideSnackBar()
+            }
+        }
+
 
     private fun initBinding() {
         binding.viewModel = viewModel
