@@ -3,6 +3,7 @@ package com.chslcompany.spaceflightnews.ui.home
 import androidx.lifecycle.*
 import com.chslcompany.spaceflightnews.core.PostState
 import com.chslcompany.spaceflightnews.core.RemoteException
+import com.chslcompany.spaceflightnews.data.model.Post
 import com.chslcompany.spaceflightnews.data.repository.PostRepository
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
@@ -11,8 +12,8 @@ import kotlinx.coroutines.launch
 
 class HomeViewModel(private val repository: PostRepository) : ViewModel() {
 
-    private val _listPost = MutableLiveData<PostState>()
-    val listPost: LiveData<PostState>
+    private val _listPost = MutableLiveData<PostState<List<Post>>>()
+    val listPost: LiveData<PostState<List<Post>>>
         get() = _listPost
 
     private val _progressBarVisible = MutableLiveData(false)
@@ -37,10 +38,10 @@ class HomeViewModel(private val repository: PostRepository) : ViewModel() {
                 .catch {
                     val exception = RemoteException(SERVICE_UNAVAILABLE)
                     _listPost.postValue(PostState.Error(exception))
-                    _snackBar.postValue(exception.message)
+                    _snackBar.value = exception.message
                 }
                 .collect { posts ->
-                    _listPost.postValue(PostState.Success(posts))
+                    _listPost.value = PostState.Success(posts)
                 }
         }
     }

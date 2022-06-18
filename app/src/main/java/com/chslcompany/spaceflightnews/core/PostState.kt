@@ -1,9 +1,7 @@
 package com.chslcompany.spaceflightnews.core
 
-import com.chslcompany.spaceflightnews.data.model.Post
-
-sealed class PostState{
-    object Loading : PostState()
-    data class Success(val result: List<Post>) : PostState()
-    data class Error(val throwable: Throwable) : PostState()
+sealed class PostState<out T: Any>{
+    object Loading : PostState<Nothing>()
+    data class Success<out T : Any>(val result: T) : PostState<T>()
+    data class Error(val throwable: Throwable) : PostState<Nothing>()
 }
