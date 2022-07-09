@@ -1,10 +1,14 @@
 package com.chslcompany.spaceflightnews.ui.home
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.asLiveData
+import com.chslcompany.spaceflightnews.core.NetworkState
+import com.chslcompany.spaceflightnews.core.NetworkUtil
 import com.chslcompany.spaceflightnews.core.PostState
 import com.chslcompany.spaceflightnews.databinding.HomeFragmentBinding
 import com.chslcompany.spaceflightnews.ui.adapter.PostListAdapter
@@ -19,6 +23,13 @@ class HomeFragment : Fragment() {
     }
     private val adapter by lazy { PostListAdapter() }
 
+    private lateinit var networkUtil: NetworkUtil
+
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+    }
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -27,8 +38,28 @@ class HomeFragment : Fragment() {
         initRecyclerView()
         observeSnackBarLiveData()
         observePostStateLiveData()
+        setupNetwork()
+        lifecycle.addObserver(viewModel)
         return binding.root
     }
+
+    private fun setupNetwork() {
+        networkUtil = NetworkUtil(requireContext())
+        lifecycle.addObserver(networkUtil)
+
+        networkUtil.networkAvailableStateFlow.asLiveData()
+            .observe(this, { networkState ->
+                handleNetworkState(networkState)
+            })
+    }
+
+    private fun handleNetworkState(networkState: NetworkState?) {
+        when (networkState) {
+            NetworkState.Available -> Log.i("Teste", "conectado")
+            else -> Log.i("Teste", "desconectado")
+        }
+    }
+
 
     private fun initRecyclerView() {
         binding.homeRv.adapter = adapter

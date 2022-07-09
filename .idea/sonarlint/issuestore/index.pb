@@ -1,7 +1,30 @@
 
-P
- app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
-t
-Dapp/src/main/java/com/chslcompany/spaceflightnews/ui/MainActivity.kt,c\8\c85193a960cd6f99a7d56222e0cb932ffb2e46c3
+à
+Xapp/src/main/java/com/chslcompany/spaceflightnews/data/service/SpaceFlightNewsService.kt,d\8\d82f57c10e7f7e0e9d87437ac385574dce729eac
+>
+app/.gitignore,5\1\51e1c5d383dfaa35e0e7e5873a0a99355a86880f
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
+y
+Iapp/src/main/java/com/chslcompany/spaceflightnews/core/RemoteException.kt,c\4\c479def81c22e7b8214bfbb76ad13b2449c0deea
+9
+	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
+É
+Sapp/src/main/java/com/chslcompany/spaceflightnews/ui/binding/PostBindingAdapters.kt,c\f\cf349aa44014f7c8361d3f615a85111364f241f7
+
+Oapp/src/main/java/com/chslcompany/spaceflightnews/ui/adapter/PostListAdapter.kt,7\6\767a32375c1719790296df4f3a2ad21a98b2804e
+s
+Capp/src/main/java/com/chslcompany/spaceflightnews/core/PostState.kt,2\6\26e46aef4b7b07dba6aa9553154438f5ad84eb3b
 Å
 Qapp/src/main/java/com/chslcompany/spaceflightnews/data/model/SpaceFlightModels.kt,4\d\4ddb781dfcfd903ae0ae3e97c3c82b81fe89cbd6
+É
+Sapp/src/main/java/com/chslcompany/spaceflightnews/data/repository/PostRepository.kt,a\3\a39258034ad97c4d04bebcc0ed56bdaffcd12ae4
+P
+ app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
+~
+Napp/src/test/java/com/chslcompany/spaceflightnews/GetLatestPostsUseCaseTest.kt,f\8\f8dfb33a621f01df31e9d8fcb9d572efed8c783c
+t
+Dapp/src/test/java/com/chslcompany/spaceflightnews/InitDIComponent.kt,2\5\254731a5fe61b2a3d04f21c328bb957dde5fdaa4
+á
+Wapp/src/main/java/com/chslcompany/spaceflightnews/data/repository/PostRepositoryImpl.kt,3\f\3fa3b53fc533447ed8d0d8bb364a2c1ff89e6beb

@@ -4,13 +4,14 @@ import androidx.lifecycle.*
 import com.chslcompany.spaceflightnews.core.PostState
 import com.chslcompany.spaceflightnews.core.RemoteException
 import com.chslcompany.spaceflightnews.data.model.Post
-import com.chslcompany.spaceflightnews.data.repository.PostRepository
+import com.chslcompany.spaceflightnews.domain.usecase.GetLatestPostsUseCase
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
-class HomeViewModel(private val repository: PostRepository) : ViewModel() {
+class HomeViewModel(private val useCase: GetLatestPostsUseCase) : ViewModel(),
+    DefaultLifecycleObserver {
 
     private val _listPost = MutableLiveData<PostState<List<Post>>>()
     val listPost: LiveData<PostState<List<Post>>>
@@ -30,7 +31,7 @@ class HomeViewModel(private val repository: PostRepository) : ViewModel() {
 
     private fun fetchPosts() {
         viewModelScope.launch {
-            repository.listPosts()
+            useCase.execute()
                 .onStart {
                     _listPost.postValue(PostState.Loading)
                     showProgressBar()
@@ -47,7 +48,7 @@ class HomeViewModel(private val repository: PostRepository) : ViewModel() {
     }
 
     fun showProgressBar() {
-       _progressBarVisible.value = true
+        _progressBarVisible.value = true
     }
 
     fun hideProgressBar() {
@@ -62,14 +63,14 @@ class HomeViewModel(private val repository: PostRepository) : ViewModel() {
         private const val SERVICE_UNAVAILABLE = "Serviço indisponível"
     }
 
-    val showText = Transformations.map(listPost){ state->
+    val showText = Transformations.map(listPost) { state ->
         when (state) {
             PostState.Loading -> {
-               "Carregando as noticias.\n Espere um instante"
+                "Carregando as noticias.\n Espere um instante"
             }
             is PostState.Success -> ""
             is PostState.Error -> {
-               "Peço desculpas\n Tente novamente mais tarde"
+                "Peço desculpas\n Tente novamente mais tarde"
             }
         }
     }

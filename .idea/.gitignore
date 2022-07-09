@@ -4,5 +4,6 @@
 /misc.xml
 /gradle.xml
 /compiler.xml
+/deploymentTargetDropDown.xml
 /vcs.xml
 /sonarlint

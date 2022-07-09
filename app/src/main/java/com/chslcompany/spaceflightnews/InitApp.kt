@@ -2,6 +2,7 @@ package com.chslcompany.spaceflightnews
 
 import android.app.Application
 import com.chslcompany.spaceflightnews.data.di.DataModule
+import com.chslcompany.spaceflightnews.domain.di.DomainModule
 import com.chslcompany.spaceflightnews.ui.di.ViewModelModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
@@ -17,6 +18,7 @@ class InitApp: Application(){
 
         ViewModelModule.load()
         DataModule.load()
+        DomainModule.load()
     }
 
 }

@@ -1,7 +1,7 @@
 package com.chslcompany.spaceflightnews.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.chslcompany.spaceflightnews.R
 
 class MainActivity : AppCompatActivity() {

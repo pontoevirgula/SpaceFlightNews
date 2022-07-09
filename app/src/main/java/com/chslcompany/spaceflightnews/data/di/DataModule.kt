@@ -44,11 +44,11 @@ object DataModule {
     }
 
     private inline fun <reified T> providerService(client: OkHttpClient, factory: Moshi): T =
-        Retrofit.Builder().apply {
-            baseUrl(URL_BASE)
-            addConverterFactory(MoshiConverterFactory.create(factory))
-            client(client)
-        }.build()
+        Retrofit.Builder()
+            .baseUrl(URL_BASE)
+            .addConverterFactory(MoshiConverterFactory.create(factory))
+            .client(client)
+            .build()
             .create(T::class.java)
 
 
