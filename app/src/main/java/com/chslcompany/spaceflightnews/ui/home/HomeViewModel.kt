@@ -31,7 +31,7 @@ class HomeViewModel(private val useCase: GetLatestPostsUseCase) : ViewModel(),
 
     private fun fetchPosts() {
         viewModelScope.launch {
-            useCase.execute()
+            useCase()
                 .onStart {
                     _listPost.postValue(PostState.Loading)
                     showProgressBar()
