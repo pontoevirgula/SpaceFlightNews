@@ -1,5 +1,6 @@
 package com.chslcompany.spaceflightnews
 
+import com.chslcompany.spaceflightnews.core.CategoryEnum
 import com.chslcompany.spaceflightnews.data.model.Post
 import com.chslcompany.spaceflightnews.domain.usecase.GetLatestPostsUseCase
 import kotlinx.coroutines.flow.Flow
@@ -94,20 +95,21 @@ class GetLatestPostsUseCaseTest : KoinTest {
     @Test
     fun `should return not null when connect with repository`() {
         runBlocking {
-            val result = getLatestPostsUseCase()
+            val result = getLatestPostsUseCase(CategoryEnum.ARTICLES.value)
             assertNotNull(result)
         }
     }
 
     @Test
     fun `should return not empty when connect with repository`() = runBlocking {
-        val result = getLatestPostsUseCase()
+        val result = getLatestPostsUseCase(CategoryEnum.ARTICLES.value)
         assertTrue(result.first().isNotEmpty())
     }
 
     @Test
     fun `should return right object when connect with repository`() = runBlocking {
-        val result = getLatestPostsUseCase()
+        val result = getLatestPostsUseCase(CategoryEnum.ARTICLES.value)
+        println(result.first().size)
         assertTrue(result is Flow<List<Post>>)
     }
 }

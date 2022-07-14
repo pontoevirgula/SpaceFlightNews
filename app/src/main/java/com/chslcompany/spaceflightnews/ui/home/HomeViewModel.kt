@@ -1,6 +1,7 @@
 package com.chslcompany.spaceflightnews.ui.home
 
 import androidx.lifecycle.*
+import com.chslcompany.spaceflightnews.core.CategoryEnum
 import com.chslcompany.spaceflightnews.core.PostState
 import com.chslcompany.spaceflightnews.core.RemoteException
 import com.chslcompany.spaceflightnews.data.model.Post
@@ -31,7 +32,7 @@ class HomeViewModel(private val useCase: GetLatestPostsUseCase) : ViewModel(),
 
     private fun fetchPosts() {
         viewModelScope.launch {
-            useCase()
+            useCase(CategoryEnum.ARTICLES.value)
                 .onStart {
                     _listPost.postValue(PostState.Loading)
                     showProgressBar()
@@ -59,10 +60,6 @@ class HomeViewModel(private val useCase: GetLatestPostsUseCase) : ViewModel(),
         _snackBar.value = null
     }
 
-    companion object {
-        private const val SERVICE_UNAVAILABLE = "Serviço indisponível"
-    }
-
     val showText = Transformations.map(listPost) { state ->
         when (state) {
             PostState.Loading -> {
@@ -74,5 +71,7 @@ class HomeViewModel(private val useCase: GetLatestPostsUseCase) : ViewModel(),
             }
         }
     }
-
+    companion object {
+        private const val SERVICE_UNAVAILABLE = "Serviço indisponível"
+    }
 }

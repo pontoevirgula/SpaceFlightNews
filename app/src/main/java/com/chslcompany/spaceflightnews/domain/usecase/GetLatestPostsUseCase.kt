@@ -6,9 +6,9 @@ import com.chslcompany.spaceflightnews.data.repository.PostRepository
 import kotlinx.coroutines.flow.Flow
 
 class GetLatestPostsUseCase(private val repository: PostRepository) :
-    BaseUseCase.NoParam<List<Post>>() {
+    BaseUseCase<String, List<Post>>() {
 
-    override suspend fun execute(): Flow<List<Post>> =
-        repository.listPosts()
+    override suspend fun execute(param: String): Flow<List<Post>> =
+        repository.listPosts(param)
 
 }
