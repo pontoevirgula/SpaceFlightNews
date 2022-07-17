@@ -1,9 +1,6 @@
 
 >
 app/.gitignore,5\1\51e1c5d383dfaa35e0e7e5873a0a99355a86880f
-:
-
-.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 ƒ
@@ -22,10 +19,6 @@ t
 Dapp/src/main/java/com/chslcompany/spaceflightnews/ui/MainActivity.kt,c\8\c85193a960cd6f99a7d56222e0cb932ffb2e46c3
 u
 Eapp/src/main/java/com/chslcompany/spaceflightnews/core/NetworkUtil.kt,1\3\13fd3d4a988c77f0eab292b15ce5ee26ed930742
-t
-Dapp/src/test/java/com/chslcompany/spaceflightnews/InitDIComponent.kt,2\5\254731a5fe61b2a3d04f21c328bb957dde5fdaa4
-o
-?app/src/test/java/com/chslcompany/spaceflightnews/ModuleTest.kt,b\1\b1d4b8c1be5fbb4ee8e28c0b29c295e8ee4ab847
 y
 Iapp/src/main/java/com/chslcompany/spaceflightnews/core/RemoteException.kt,c\4\c479def81c22e7b8214bfbb76ad13b2449c0deea
 s
@@ -34,3 +27,19 @@ Capp/src/main/java/com/chslcompany/spaceflightnews/core/PostState.kt,2\6\26e46a
 Kapp/src/main/java/com/chslcompany/spaceflightnews/domain/di/DomainModule.kt,d\5\d58b654e125543a8e664a637c7e82ea493ece4ee
 l
 <app/src/main/java/com/chslcompany/spaceflightnews/InitApp.kt,0\0\001ea4e06d627e00169fa6c65286bf0b78f376f7
+w
+Gapp/src/main/java/com/chslcompany/spaceflightnews/data/di/DataModule.kt,8\c\8c3fb17ae5367e8692e4643d69436d2c666b17ab
+u
+Eapp/src/main/java/com/chslcompany/spaceflightnews/core/BaseUseCase.kt,6\c\6c2eed1311920c36408890db9a553f560efb4ac5
+ˆ
+Xapp/src/main/java/com/chslcompany/spaceflightnews/data/service/SpaceFlightNewsService.kt,d\8\d82f57c10e7f7e0e9d87437ac385574dce729eac
+ƒ
+Sapp/src/main/java/com/chslcompany/spaceflightnews/data/repository/PostRepository.kt,a\3\a39258034ad97c4d04bebcc0ed56bdaffcd12ae4
+@
+app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
+v
+Fapp/src/main/java/com/chslcompany/spaceflightnews/core/CategoryEnum.kt,7\2\72b64e7a6c39d7e6a6de87f322f8b77a4ee3eb80
+z
+Japp/src/main/java/com/chslcompany/spaceflightnews/ui/home/HomeViewModel.kt,1\9\19c78fd3813e4776db2695f22534b3a83e178e9e
+w
+Gapp/src/test/java/com/chslcompany/service/SpaceFlightNewsServiceTest.kt,f\7\f76a42644dde9e5d12f2003d8520a4f760abe902
