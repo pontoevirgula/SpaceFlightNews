@@ -4,6 +4,13 @@
         <item quantity="one">%d launch event</item>
         <item quantity="other">%d launch events</item>
     </plurals>
+
     <string name="app_name">Space News</string>
-    <string name="HomeToolbarTitle">Noticias recentes</string>
+    <string name="news">Noticias</string>
+    <string name="latest_news">Noticias recentes</string>
+    <string name="blogs">Blogs</string>
+    <string name="latest_blogs">Blogs mais recentes</string>
+    <string name="reports">Relatórios</string>
+    <string name="latest_reports">Últimos relatórios</string>
+
 </resources>

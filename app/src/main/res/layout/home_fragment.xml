@@ -19,6 +19,19 @@
             android:layout_height="match_parent"
             android:background="@color/medium_gray">
 
+            <com.google.android.material.appbar.MaterialToolbar
+                android:id="@+id/home_toolbar"
+                toolbarTitle="@{viewModel.category}"
+                style="@style/Widget.MaterialComponents.Toolbar.PrimarySurface"
+                android:layout_width="match_parent"
+                android:layout_height="?attr/actionBarSize"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                android:background="@drawable/gradient_rectangle"
+                app:titleCentered="true"
+                tools:title="@string/latest_news" />
+
+
             <androidx.appcompat.widget.AppCompatTextView
                 android:visibility="@{viewModel.showText.empty ? View.GONE : View.VISIBLE}"
                 android:text="@{viewModel.showText}"
@@ -26,7 +39,7 @@
                 android:textSize="18sp"
                 android:gravity="center"
                 android:textStyle="bold"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/home_toolbar"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -42,7 +55,7 @@
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/home_toolbar"
                 app:layout_constraintVertical_bias="0.0"
                 tools:listitem="@layout/item_post_adapter" />
 

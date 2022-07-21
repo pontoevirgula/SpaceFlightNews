@@ -26,13 +26,18 @@ class HomeViewModel(private val useCase: GetLatestPostsUseCase) : ViewModel(),
     val snackBar: LiveData<String?>
         get() = _snackBar
 
+    private var _category = MutableLiveData<CategoryEnum>().apply {
+        value = CategoryEnum.ARTICLES
+    }
+    val category : LiveData<CategoryEnum> = _category
+
     init {
-        fetchPosts()
+        fetchPosts(_category.value ?: CategoryEnum.ARTICLES)
     }
 
-    private fun fetchPosts() {
+    fun fetchPosts(categoryEnum: CategoryEnum) {
         viewModelScope.launch {
-            useCase(CategoryEnum.ARTICLES.value)
+            useCase(categoryEnum.value)
                 .onStart {
                     _listPost.postValue(PostState.Loading)
                     showProgressBar()
@@ -44,6 +49,7 @@ class HomeViewModel(private val useCase: GetLatestPostsUseCase) : ViewModel(),
                 }
                 .collect { posts ->
                     _listPost.value = PostState.Success(posts)
+                    _category.value = enumValueOf<CategoryEnum>(categoryEnum.value.uppercase())
                 }
         }
     }
@@ -65,7 +71,7 @@ class HomeViewModel(private val useCase: GetLatestPostsUseCase) : ViewModel(),
             PostState.Loading -> {
                 "Carregando as noticias.\n Espere um instante"
             }
-            is PostState.Success -> ""
+            is PostState.Success -> EMPTY_MESSAGE
             is PostState.Error -> {
                 "Peço desculpas\n Tente novamente mais tarde"
             }
@@ -73,5 +79,6 @@ class HomeViewModel(private val useCase: GetLatestPostsUseCase) : ViewModel(),
     }
     companion object {
         private const val SERVICE_UNAVAILABLE = "Serviço indisponível"
+        private const val EMPTY_MESSAGE = ""
     }
 }

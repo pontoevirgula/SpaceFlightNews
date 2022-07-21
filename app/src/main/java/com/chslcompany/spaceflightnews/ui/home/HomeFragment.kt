@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.asLiveData
+import com.chslcompany.spaceflightnews.R
+import com.chslcompany.spaceflightnews.core.CategoryEnum
 import com.chslcompany.spaceflightnews.core.NetworkState
 import com.chslcompany.spaceflightnews.core.NetworkUtil
 import com.chslcompany.spaceflightnews.core.PostState
@@ -25,22 +27,36 @@ class HomeFragment : Fragment() {
 
     private lateinit var networkUtil: NetworkUtil
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
         initBinding()
+        initOptionsMenu()
         initRecyclerView()
         observeSnackBarLiveData()
         observePostStateLiveData()
         setupNetwork()
-        lifecycle.addObserver(viewModel)
         return binding.root
+    }
+
+    private fun initOptionsMenu(){
+        with(binding.homeToolbar){
+            inflateMenu(R.menu.options_menu)
+
+            menu.findItem(R.id.articles_menu).setOnMenuItemClickListener {
+                viewModel.fetchPosts(CategoryEnum.ARTICLES)
+                true
+            }
+            menu.findItem(R.id.blogs_menu).setOnMenuItemClickListener {
+                viewModel.fetchPosts(CategoryEnum.BLOGS)
+                true
+            }
+            menu.findItem(R.id.report_menu).setOnMenuItemClickListener {
+                viewModel.fetchPosts(CategoryEnum.REPORTS)
+                true
+            }
+        }
     }
 
     private fun setupNetwork() {
@@ -59,7 +75,6 @@ class HomeFragment : Fragment() {
             else -> Log.i("Teste", "desconectado")
         }
     }
-
 
     private fun initRecyclerView() {
         binding.homeRv.adapter = adapter
@@ -92,7 +107,6 @@ class HomeFragment : Fragment() {
                 viewModel.hideSnackBar()
             }
         }
-
 
     private fun initBinding() {
         binding.viewModel = viewModel
