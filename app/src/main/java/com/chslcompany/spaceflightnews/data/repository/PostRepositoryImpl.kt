@@ -10,11 +10,22 @@ import retrofit2.HttpException
 
 class PostRepositoryImpl(private val service: SpaceFlightNewsService) : PostRepository {
 
-    override fun listPosts(category: String): Flow<List<Post>> = flow {
+    override suspend fun listPosts(category: String): Flow<List<Post>> = flow {
         try{
             emit(service.getListPost(category))
         }catch (ex : HttpException){
             throw RemoteException("Can't connect API")
+        }
+    }
+
+    override suspend fun listPostTitleContains(
+        category: String,
+        titleContains: String?
+    ): Flow<List<Post>> = flow {
+        try {
+            emit(service.getListPostTitleContains(category, titleContains))
+        } catch (ex: HttpException) {
+            throw RemoteException("Unable to retrieve posts")
         }
     }
 

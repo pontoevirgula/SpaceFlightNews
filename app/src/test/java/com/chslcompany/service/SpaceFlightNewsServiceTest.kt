@@ -56,4 +56,22 @@ class SpaceFlightNewsServiceTest {
         assertEquals(requestReports.path,"/reports")
     }
 
+    @Test
+    fun `should reach correct endpoint when receive category with option`() = runBlocking {
+        mockWebServer.enqueue(MockResponse().setBody("[]"))
+        service.getListPostTitleContains("articles","mars")
+        val request = mockWebServer.takeRequest()
+        println(request.path)
+        assertEquals(request.path,"/articles?title_contains=mars")
+    }
+
+    @Test
+    fun `should reach correct endpoint when receive category with option null`() = runBlocking {
+        mockWebServer.enqueue(MockResponse().setBody("[]"))
+        service.getListPostTitleContains("articles",null)
+        val request = mockWebServer.takeRequest()
+        println(request.path)
+        assertEquals(request.path,"/articles")
+    }
+
 }
