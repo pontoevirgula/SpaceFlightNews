@@ -1,6 +1,7 @@
 package com.chslcompany.spaceflightnews.domain.di
 
 import com.chslcompany.spaceflightnews.domain.usecase.GetLatestPostsUseCase
+import com.chslcompany.spaceflightnews.domain.usecase.GetPostTitleContainsUseCase
 import org.koin.core.context.loadKoinModules
 import org.koin.core.module.Module
 import org.koin.dsl.module
@@ -12,6 +13,7 @@ object DomainModule {
     private fun useCaseModule(): Module =
         module {
             factory { GetLatestPostsUseCase(get()) }
+            factory { GetPostTitleContainsUseCase(get()) }
         }
 
 }

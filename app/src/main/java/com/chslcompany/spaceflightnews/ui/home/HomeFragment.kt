@@ -12,6 +12,7 @@ import com.chslcompany.spaceflightnews.core.CategoryEnum
 import com.chslcompany.spaceflightnews.core.NetworkState
 import com.chslcompany.spaceflightnews.core.NetworkUtil
 import com.chslcompany.spaceflightnews.core.PostState
+import com.chslcompany.spaceflightnews.data.model.Search
 import com.chslcompany.spaceflightnews.databinding.HomeFragmentBinding
 import com.chslcompany.spaceflightnews.ui.adapter.PostListAdapter
 import com.google.android.material.snackbar.Snackbar
@@ -45,15 +46,15 @@ class HomeFragment : Fragment() {
             inflateMenu(R.menu.options_menu)
 
             menu.findItem(R.id.articles_menu).setOnMenuItemClickListener {
-                viewModel.fetchPosts(CategoryEnum.ARTICLES)
+                viewModel.fetchPosts(Search(CategoryEnum.ARTICLES.value))
                 true
             }
             menu.findItem(R.id.blogs_menu).setOnMenuItemClickListener {
-                viewModel.fetchPosts(CategoryEnum.BLOGS)
+                viewModel.fetchPosts(Search(CategoryEnum.BLOGS.value))
                 true
             }
             menu.findItem(R.id.report_menu).setOnMenuItemClickListener {
-                viewModel.fetchPosts(CategoryEnum.REPORTS)
+                viewModel.fetchPosts(Search(CategoryEnum.REPORTS.value))
                 true
             }
         }

@@ -19,3 +19,8 @@ data class Launch(
     val id: String,
     val provider: String
 )
+
+data class Search(
+    val type : String,
+    var titleSearch : String? = null
+)

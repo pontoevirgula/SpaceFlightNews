@@ -5,13 +5,18 @@ import com.chslcompany.spaceflightnews.core.CategoryEnum
 import com.chslcompany.spaceflightnews.core.PostState
 import com.chslcompany.spaceflightnews.core.RemoteException
 import com.chslcompany.spaceflightnews.data.model.Post
+import com.chslcompany.spaceflightnews.data.model.Search
 import com.chslcompany.spaceflightnews.domain.usecase.GetLatestPostsUseCase
+import com.chslcompany.spaceflightnews.domain.usecase.GetPostTitleContainsUseCase
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
-class HomeViewModel(private val useCase: GetLatestPostsUseCase) : ViewModel(),
+class HomeViewModel(
+    private val latestPostUseCase: GetLatestPostsUseCase,
+    private val searchTitleUseCase: GetPostTitleContainsUseCase
+    ) : ViewModel(),
     DefaultLifecycleObserver {
 
     private val _listPost = MutableLiveData<PostState<List<Post>>>()
@@ -32,24 +37,44 @@ class HomeViewModel(private val useCase: GetLatestPostsUseCase) : ViewModel(),
     val category : LiveData<CategoryEnum> = _category
 
     init {
-        fetchPosts(_category.value ?: CategoryEnum.ARTICLES)
+        fetchPosts(Search(_category.value?.toString() ?: CategoryEnum.ARTICLES.value))
     }
 
-    fun fetchPosts(categoryEnum: CategoryEnum) {
+    fun fetchPosts(search: Search) {
         viewModelScope.launch {
-            useCase(categoryEnum.value)
+            latestPostUseCase(search)
                 .onStart {
                     _listPost.postValue(PostState.Loading)
                     showProgressBar()
                 }
                 .catch {
-                    val exception = RemoteException(SERVICE_UNAVAILABLE)
-                    _listPost.postValue(PostState.Error(exception))
-                    _snackBar.value = exception.message
+                    with(RemoteException(SERVICE_UNAVAILABLE)){
+                        _listPost.postValue(PostState.Error(this))
+                        _snackBar.value = this.message
+                    }
                 }
                 .collect { posts ->
                     _listPost.value = PostState.Success(posts)
-                    _category.value = enumValueOf<CategoryEnum>(categoryEnum.value.uppercase())
+                    _category.value = enumValueOf<CategoryEnum>(search.type)
+                }
+        }
+    }
+
+    fun fetchPostsTitleContains(search: Search) {
+        viewModelScope.launch {
+            searchTitleUseCase(search)
+                .onStart {
+                    _listPost.postValue(PostState.Loading)
+                }
+                .catch {
+                    with(RemoteException(SERVICE_UNAVAILABLE)){
+                        _listPost.postValue(PostState.Error(this))
+                        _snackBar.value = this.message
+                    }
+                }
+                .collect { posts->
+                    _listPost.value = PostState.Success(posts)
+                    _category.value = enumValueOf<CategoryEnum>(search.type.uppercase())
                 }
         }
     }

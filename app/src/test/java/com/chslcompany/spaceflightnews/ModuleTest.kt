@@ -3,7 +3,9 @@ package com.chslcompany.spaceflightnews
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import com.chslcompany.spaceflightnews.data.repository.PostRepository
 import com.chslcompany.spaceflightnews.data.repository.PostRepositoryImpl
+import com.chslcompany.spaceflightnews.domain.GetPostTitleContainsUseCaseTest
 import com.chslcompany.spaceflightnews.domain.usecase.GetLatestPostsUseCase
+import com.chslcompany.spaceflightnews.domain.usecase.GetPostTitleContainsUseCase
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import org.koin.dsl.module
@@ -12,6 +14,7 @@ import retrofit2.converter.moshi.MoshiConverterFactory
 
 fun configureDomainModulesForTest() = module {
     factory { GetLatestPostsUseCase(get()) }
+    factory { GetPostTitleContainsUseCase(get()) }
 }
 
 fun configureDataModulesForTest(baseUrl: String) = module {
