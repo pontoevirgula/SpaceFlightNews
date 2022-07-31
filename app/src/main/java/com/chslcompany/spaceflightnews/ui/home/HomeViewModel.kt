@@ -34,7 +34,8 @@ class HomeViewModel(
     private var _category = MutableLiveData<CategoryEnum>().apply {
         value = CategoryEnum.ARTICLES
     }
-    val category : LiveData<CategoryEnum> = _category
+    val category : LiveData<CategoryEnum>
+        get() = _category
 
     init {
         fetchPosts(Search(_category.value?.toString() ?: CategoryEnum.ARTICLES.value))
@@ -55,12 +56,16 @@ class HomeViewModel(
                 }
                 .collect { posts ->
                     _listPost.value = PostState.Success(posts)
-                    _category.value = enumValueOf<CategoryEnum>(search.type)
+                    _category.value = enumValueOf<CategoryEnum>(search.type.uppercase())
                 }
         }
     }
 
-    fun fetchPostsTitleContains(search: Search) {
+    fun searchPostsTitleContains(searchString : String) =
+        fetchPostsTitleContains(Search(_category.value.toString(),searchString))
+
+
+    private fun fetchPostsTitleContains(search: Search) {
         viewModelScope.launch {
             searchTitleUseCase(search)
                 .onStart {
