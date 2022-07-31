@@ -1,8 +1,6 @@
 
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-P
- app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
 l
 <app/src/main/java/com/chslcompany/spaceflightnews/InitApp.kt,0\0\001ea4e06d627e00169fa6c65286bf0b78f376f7
 w
@@ -17,8 +15,6 @@ t
 Dapp/src/test/java/com/chslcompany/spaceflightnews/InitDIComponent.kt,2\5\254731a5fe61b2a3d04f21c328bb957dde5fdaa4
 s
 Capp/src/main/java/com/chslcompany/spaceflightnews/core/PostState.kt,2\6\26e46aef4b7b07dba6aa9553154438f5ad84eb3b
-u
-Eapp/src/main/java/com/chslcompany/spaceflightnews/core/NetworkUtil.kt,1\3\13fd3d4a988c77f0eab292b15ce5ee26ed930742
 y
 Iapp/src/main/java/com/chslcompany/spaceflightnews/core/RemoteException.kt,c\4\c479def81c22e7b8214bfbb76ad13b2449c0deea
 ƒ
@@ -34,8 +30,6 @@ Eapp/src/main/java/com/chslcompany/spaceflightnews/core/BaseUseCase.kt,6\c\6c2e
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
 z
 Japp/src/main/java/com/chslcompany/spaceflightnews/ui/di/ViewModelModule.kt,3\8\38795e309c1c26a897b2333080752bec7a0a1620
-‰
-Yapp/src/main/java/com/chslcompany/spaceflightnews/domain/usecase/GetLatestPostsUseCase.kt,1\0\10c525ec65afdd0427466b1a2e83fdc34000d08f
 {
 Kapp/src/main/java/com/chslcompany/spaceflightnews/domain/di/DomainModule.kt,d\5\d58b654e125543a8e664a637c7e82ea493ece4ee
 ‹

@@ -6,6 +6,8 @@ import android.net.ConnectivityManager
 import android.net.Network
 import android.net.NetworkCapabilities
 import android.net.NetworkRequest
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.lifecycle.DefaultLifecycleObserver
 import androidx.lifecycle.LifecycleOwner
 import kotlinx.coroutines.CoroutineScope
@@ -45,18 +47,18 @@ class NetworkUtil(
         unRegisterNetworkCallback()
     }
 
-    fun initNetwork(){
+    private fun initNetwork(){
         connectivityManager =
             context.getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
     }
 
-   fun registerNetworkCallback(){
+   private fun registerNetworkCallback(){
         initCoroutine()
         initNetworkMonitoring()
         checkCurrentNetworkState()
     }
 
-    fun unRegisterNetworkCallback(){
+    private fun unRegisterNetworkCallback(){
         validNetworks.clear()
         connectivityManager?.unregisterNetworkCallback(networkCallback)
         job.cancel()
@@ -92,9 +94,10 @@ class NetworkUtil(
         }
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     private fun checkCurrentNetworkState() {
-        connectivityManager?.allNetworks?.let {
-            validNetworks.addAll(it)
+        connectivityManager?.activeNetwork?.let {
+            validNetworks.addAll(listOf(it))
         }
         checkValidNetworks()
     }
