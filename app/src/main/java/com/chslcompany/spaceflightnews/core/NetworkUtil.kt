@@ -37,6 +37,7 @@ class NetworkUtil(
         initNetwork()
     }
 
+    @RequiresApi(Build.VERSION_CODES.M)
     override fun onStart(owner: LifecycleOwner) {
         super.onStart(owner)
         registerNetworkCallback()
@@ -52,6 +53,7 @@ class NetworkUtil(
             context.getSystemService(CONNECTIVITY_SERVICE) as ConnectivityManager
     }
 
+   @RequiresApi(Build.VERSION_CODES.M)
    private fun registerNetworkCallback(){
         initCoroutine()
         initNetworkMonitoring()
