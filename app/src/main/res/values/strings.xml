@@ -13,5 +13,6 @@
     <string name="reports">Relatórios</string>
     <string name="latest_reports">Últimos relatórios</string>
     <string name="search">Busca</string>
+    <string name="search_in">Buscar em</string>
 
 </resources>

@@ -45,6 +45,11 @@ class HomeFragment : Fragment() {
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        observeCategoryLiveData()
+    }
+
     private fun initSearchView() {
         with(binding.homeToolbar) {
             val searchItem = menu.findItem(R.id.search_menu)
@@ -68,6 +73,16 @@ class HomeFragment : Fragment() {
             })
         }
     }
+
+    private fun observeCategoryLiveData() =
+        viewModel.category.observe(viewLifecycleOwner){
+            searchView.queryHint = "${getString(R.string.search_in)} " + when (it) {
+                CategoryEnum.ARTICLES -> getString(R.string.news)
+                CategoryEnum.BLOGS -> getString(R.string.blogs)
+                CategoryEnum.REPORTS -> getString(R.string.reports)
+                else -> getString(R.string.latest_news)
+            }
+        }
 
     private fun initOptionsMenu() {
         with(binding.homeToolbar) {
