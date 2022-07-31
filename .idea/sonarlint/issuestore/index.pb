@@ -1,8 +1,6 @@
 
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-l
-<app/src/main/java/com/chslcompany/spaceflightnews/InitApp.kt,0\0\001ea4e06d627e00169fa6c65286bf0b78f376f7
 w
 Gapp/src/main/java/com/chslcompany/spaceflightnews/data/di/DataModule.kt,8\c\8c3fb17ae5367e8692e4643d69436d2c666b17ab
 @
@@ -19,10 +17,6 @@ y
 Iapp/src/main/java/com/chslcompany/spaceflightnews/core/RemoteException.kt,c\4\c479def81c22e7b8214bfbb76ad13b2449c0deea
 ƒ
 Sapp/src/main/java/com/chslcompany/spaceflightnews/data/repository/PostRepository.kt,a\3\a39258034ad97c4d04bebcc0ed56bdaffcd12ae4
-t
-Dapp/src/main/java/com/chslcompany/spaceflightnews/ui/MainActivity.kt,c\8\c85193a960cd6f99a7d56222e0cb932ffb2e46c3
-
-Oapp/src/main/java/com/chslcompany/spaceflightnews/ui/adapter/PostListAdapter.kt,7\6\767a32375c1719790296df4f3a2ad21a98b2804e
 u
 Eapp/src/main/java/com/chslcompany/spaceflightnews/core/BaseUseCase.kt,6\c\6c2eed1311920c36408890db9a553f560efb4ac5
 :
