@@ -64,7 +64,6 @@ class HomeViewModel(
     fun searchPostsTitleContains(searchString : String) =
         fetchPostsTitleContains(Search(_category.value.toString(),searchString))
 
-
     private fun fetchPostsTitleContains(search: Search) {
         viewModelScope.launch {
             searchTitleUseCase(search)

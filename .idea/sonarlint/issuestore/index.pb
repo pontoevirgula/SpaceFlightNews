@@ -3,8 +3,6 @@
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
 w
 Gapp/src/main/java/com/chslcompany/spaceflightnews/data/di/DataModule.kt,8\c\8c3fb17ae5367e8692e4643d69436d2c666b17ab
-@
-app/build.gradle,f\4\f4a01d6a4fcb971362ec00a83903fd3902f52164
 É
 Sapp/src/main/java/com/chslcompany/spaceflightnews/ui/binding/PostBindingAdapters.kt,c\f\cf349aa44014f7c8361d3f615a85111364f241f7
 w
@@ -34,3 +32,27 @@ o
 _app/src/main/java/com/chslcompany/spaceflightnews/domain/usecase/GetPostTitleContainsUseCase.kt,4\7\477e7c5bb056f62f37810e7b01d48c3b49d9353f
 >
 app/.gitignore,5\1\51e1c5d383dfaa35e0e7e5873a0a99355a86880f
+Ö
+Uapp/src/test/java/com/chslcompany/spaceflightnews/domain/GetLatestPostsUseCaseTest.kt,a\e\aea5aa34eaae30611f25e3eda1d9447d60037557
+à
+Xapp/src/main/java/com/chslcompany/spaceflightnews/data/service/SpaceFlightNewsService.kt,d\8\d82f57c10e7f7e0e9d87437ac385574dce729eac
+Å
+Qapp/src/main/java/com/chslcompany/spaceflightnews/data/model/SpaceFlightModels.kt,4\d\4ddb781dfcfd903ae0ae3e97c3c82b81fe89cbd6
+v
+Fapp/src/main/java/com/chslcompany/spaceflightnews/core/CategoryEnum.kt,7\2\72b64e7a6c39d7e6a6de87f322f8b77a4ee3eb80
+ã
+[app/src/main/java/com/chslcompany/spaceflightnews/ui/binding/HomeFragmentBindingAdapters.kt,e\b\eb81e7620262dcde3f5e8d7eed317aad620efbcc
+á
+Wapp/src/main/java/com/chslcompany/spaceflightnews/data/repository/PostRepositoryImpl.kt,3\f\3fa3b53fc533447ed8d0d8bb364a2c1ff89e6beb
+â
+Yapp/src/main/java/com/chslcompany/spaceflightnews/domain/usecase/GetLatestPostsUseCase.kt,1\0\10c525ec65afdd0427466b1a2e83fdc34000d08f
+u
+Eapp/src/main/java/com/chslcompany/spaceflightnews/core/NetworkUtil.kt,1\3\13fd3d4a988c77f0eab292b15ce5ee26ed930742
+l
+<app/src/main/java/com/chslcompany/spaceflightnews/InitApp.kt,0\0\001ea4e06d627e00169fa6c65286bf0b78f376f7
+t
+Dapp/src/main/java/com/chslcompany/spaceflightnews/ui/MainActivity.kt,c\8\c85193a960cd6f99a7d56222e0cb932ffb2e46c3
+
+Oapp/src/main/java/com/chslcompany/spaceflightnews/ui/adapter/PostListAdapter.kt,7\6\767a32375c1719790296df4f3a2ad21a98b2804e
+P
+ app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
