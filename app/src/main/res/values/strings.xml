@@ -14,5 +14,12 @@
     <string name="latest_reports">Últimos relatórios</string>
     <string name="search">Busca</string>
     <string name="search_in">Buscar em</string>
+    <string name="large_text">
+        "A material metaphor is the unifying theory of a rationalized space and a system of motion."
+        "The material is grounded in tactile reality, inspired by the study of paper and ink, yet "
+        "technologically advanced and open to imagination and magic.\n"
+    </string>
+    <string name="go_to_complete_news">SAIBA MAIS</string>
+    <string name="published_at"><![CDATA[ Publicada em <b>%s</b> ás %s.]]></string>
 
 </resources>

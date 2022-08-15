@@ -5,16 +5,19 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.chslcompany.spaceflightnews.core.setOnSingleClickListener
 import com.chslcompany.spaceflightnews.data.model.Post
 import com.chslcompany.spaceflightnews.databinding.ItemPostAdapterBinding
 
-class PostListAdapter : ListAdapter<Post, PostListAdapter.PostViewHolder>(PostListAdapter) {
+class PostListAdapter(
+    private val itemClick:((item:Post) -> Unit)
+) : ListAdapter<Post, PostListAdapter.PostViewHolder>(PostListAdapter) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PostViewHolder =
         PostViewHolder.from(parent)
 
     override fun onBindViewHolder(holder: PostViewHolder, position: Int) =
-        holder.bind(getItem(position))
+        holder.bind(getItem(position),itemClick)
 
     class PostViewHolder private constructor(private val binding: ItemPostAdapterBinding) : RecyclerView.ViewHolder(binding.root) {
         companion object {
@@ -28,8 +31,11 @@ class PostListAdapter : ListAdapter<Post, PostListAdapter.PostViewHolder>(PostLi
             }
         }
 
-        fun bind(item: Post) {
+        fun bind(item: Post, itemClick : ((item : Post) -> Unit)) {
             binding.post = item
+            itemView.setOnSingleClickListener {
+               itemClick.invoke(item)
+            }
         }
     }
 

@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.asLiveData
+import androidx.navigation.fragment.findNavController
 import com.chslcompany.spaceflightnews.R
 import com.chslcompany.spaceflightnews.core.CategoryEnum
 import com.chslcompany.spaceflightnews.core.NetworkState
@@ -25,7 +26,16 @@ class HomeFragment : Fragment() {
     private val binding: HomeFragmentBinding by lazy {
         HomeFragmentBinding.inflate(layoutInflater)
     }
-    private val adapter by lazy { PostListAdapter() }
+    private val adapter by lazy {
+        PostListAdapter { post ->
+            findNavController().navigate(
+                R.id.action_homeFragment_to_detailFragment,
+                Bundle().apply {
+                    putParcelable(POST_KEY, post)
+                }
+            )
+        }
+    }
 
     private lateinit var networkUtil: NetworkUtil
 
@@ -86,6 +96,7 @@ class HomeFragment : Fragment() {
 
     private fun initOptionsMenu() {
         with(binding.homeToolbar) {
+            menu.clear()
             inflateMenu(R.menu.options_menu)
 
             menu.findItem(R.id.articles_menu).setOnMenuItemClickListener {
@@ -108,7 +119,7 @@ class HomeFragment : Fragment() {
         lifecycle.addObserver(networkUtil)
 
         networkUtil.networkAvailableStateFlow.asLiveData()
-            .observe(this, { networkState ->
+            .observe(viewLifecycleOwner, { networkState ->
                 handleNetworkState(networkState)
             })
     }
@@ -156,6 +167,10 @@ class HomeFragment : Fragment() {
     private fun initBinding() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
+    }
+
+    companion object{
+        const val POST_KEY = "POST"
     }
 
 }
