@@ -1,4 +1,4 @@
-package com.chslcompany.spaceflightnews.ui.detail
+package com.chslcompany.spaceflightnews.ui.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater

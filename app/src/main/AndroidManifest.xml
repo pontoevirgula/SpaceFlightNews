@@ -14,13 +14,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.SpaceFlightNews2">
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.activity.MainActivity"
             android:exported="true"
             android:label="@string/title_activity_main2"
             android:theme="@style/Theme.SpaceFlightNews2.NoActionBar" />
 
         <activity
-            android:name=".ui.SplashActivity"
+            android:name=".ui.activity.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

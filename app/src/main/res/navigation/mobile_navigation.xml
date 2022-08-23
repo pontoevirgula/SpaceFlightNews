@@ -37,7 +37,7 @@
 
     <fragment
         android:id="@+id/detailFragmentDest"
-        android:name="com.chslcompany.spaceflightnews.ui.detail.PostDetailFragment"
+        android:name="com.chslcompany.spaceflightnews.ui.fragments.PostDetailFragment"
         android:label="Detalhes"
         tools:layout="@layout/fragment_post_detail" />
 </navigation>

@@ -1,4 +1,4 @@
-package com.chslcompany.spaceflightnews.ui
+package com.chslcompany.spaceflightnews.ui.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
