@@ -1,8 +1,6 @@
 
 9
 	README.md,8\e\8ec9a00bfd09b3190ac6b22251dbb1aa95a0579d
-t
-Dapp/src/test/java/com/chslcompany/spaceflightnews/InitDIComponent.kt,2\5\254731a5fe61b2a3d04f21c328bb957dde5fdaa4
 y
 Iapp/src/main/java/com/chslcompany/spaceflightnews/core/RemoteException.kt,c\4\c479def81c22e7b8214bfbb76ad13b2449c0deea
 u
@@ -10,30 +8,16 @@ Eapp/src/main/java/com/chslcompany/spaceflightnews/core/BaseUseCase.kt,6\c\6c2e
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
-z
-Japp/src/main/java/com/chslcompany/spaceflightnews/ui/di/ViewModelModule.kt,3\8\38795e309c1c26a897b2333080752bec7a0a1620
 ‹
 [app/src/test/java/com/chslcompany/spaceflightnews/domain/GetPostTitleContainsUseCaseTest.kt,1\c\1cce478ab72f1b9e550eac5ae98fbde56d249c66
-o
-?app/src/test/java/com/chslcompany/spaceflightnews/ModuleTest.kt,b\1\b1d4b8c1be5fbb4ee8e28c0b29c295e8ee4ab847
 
 _app/src/main/java/com/chslcompany/spaceflightnews/domain/usecase/GetPostTitleContainsUseCase.kt,4\7\477e7c5bb056f62f37810e7b01d48c3b49d9353f
 >
 app/.gitignore,5\1\51e1c5d383dfaa35e0e7e5873a0a99355a86880f
-…
-Uapp/src/test/java/com/chslcompany/spaceflightnews/domain/GetLatestPostsUseCaseTest.kt,a\e\aea5aa34eaae30611f25e3eda1d9447d60037557
 v
 Fapp/src/main/java/com/chslcompany/spaceflightnews/core/CategoryEnum.kt,7\2\72b64e7a6c39d7e6a6de87f322f8b77a4ee3eb80
-‹
-[app/src/main/java/com/chslcompany/spaceflightnews/ui/binding/HomeFragmentBindingAdapters.kt,e\b\eb81e7620262dcde3f5e8d7eed317aad620efbcc
 u
 Eapp/src/main/java/com/chslcompany/spaceflightnews/core/NetworkUtil.kt,1\3\13fd3d4a988c77f0eab292b15ce5ee26ed930742
-P
- app/src/main/AndroidManifest.xml,8\c\8c55c3ccc257e5907959013f99656e4c8ec3903e
-v
-Fapp/src/main/java/com/chslcompany/spaceflightnews/ui/SplashActivity.kt,e\9\e90c2fb7c01adfa5d11f10d1cb71ffec17b52c10
-w
-Gapp/src/main/java/com/chslcompany/spaceflightnews/data/di/DataModule.kt,8\c\8c3fb17ae5367e8692e4643d69436d2c666b17ab
 l
 <app/src/main/java/com/chslcompany/spaceflightnews/InitApp.kt,0\0\001ea4e06d627e00169fa6c65286bf0b78f376f7
 {
@@ -48,11 +32,17 @@ Sapp/src/main/java/com/chslcompany/spaceflightnews/data/repository/PostRepositor
 Yapp/src/main/java/com/chslcompany/spaceflightnews/domain/usecase/GetLatestPostsUseCase.kt,1\0\10c525ec65afdd0427466b1a2e83fdc34000d08f
 s
 Capp/src/main/java/com/chslcompany/spaceflightnews/core/PostState.kt,2\6\26e46aef4b7b07dba6aa9553154438f5ad84eb3b
-z
-Japp/src/main/java/com/chslcompany/spaceflightnews/ui/home/HomeViewModel.kt,1\9\19c78fd3813e4776db2695f22534b3a83e178e9e
-ƒ
-Sapp/src/main/java/com/chslcompany/spaceflightnews/ui/binding/PostBindingAdapters.kt,c\f\cf349aa44014f7c8361d3f615a85111364f241f7
-t
-Dapp/src/main/java/com/chslcompany/spaceflightnews/ui/MainActivity.kt,c\8\c85193a960cd6f99a7d56222e0cb932ffb2e46c3
-<
-build.gradle,f\0\f07866736216be0ee2aba49e392191aeae700a35
+
+Qapp/src/main/java/com/chslcompany/spaceflightnews/data/model/SpaceFlightModels.kt,4\d\4ddb781dfcfd903ae0ae3e97c3c82b81fe89cbd6
+
+Oapp/src/main/java/com/chslcompany/spaceflightnews/ui/adapter/PostListAdapter.kt,7\6\767a32375c1719790296df4f3a2ad21a98b2804e
+v
+Fapp/src/main/java/com/chslcompany/spaceflightnews/ui/SplashActivity.kt,e\9\e90c2fb7c01adfa5d11f10d1cb71ffec17b52c10
+†
+Vapp/src/main/java/com/chslcompany/spaceflightnews/ui/ui/dashboard/DashboardFragment.kt,3\8\386f7fc08695a2e54fc3357fe08b1c3d201bc8e5
+|
+Lapp/src/main/java/com/chslcompany/spaceflightnews/ui/ui/home/HomeFragment.kt,6\5\65eba8ebe1e74b106ce9ffef714c837472aaec40
+
+Oapp/src/main/java/com/chslcompany/spaceflightnews/ui/viewmodel/HomeViewModel.kt,f\9\f93e7f003c506822437ad58b17b2e8a4534c38fe
+Ž
+^app/src/main/java/com/chslcompany/spaceflightnews/ui/ui/notifications/NotificationsFragment.kt,7\4\749b8dc35cdb13d034cb8c753c6bd1384f794f57

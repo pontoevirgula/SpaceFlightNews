@@ -45,6 +45,7 @@
                     android:id="@+id/item_title_tv"
                     style="@style/ItemTitle"
                     postTitle="@{post}"
+                    android:textColor="@color/yellow"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     app:layout_constraintEnd_toEndOf="parent"

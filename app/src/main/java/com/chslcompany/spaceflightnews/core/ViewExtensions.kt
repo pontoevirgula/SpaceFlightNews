@@ -22,6 +22,7 @@ abstract class OnSingleClickListener : View.OnClickListener {
             onSingleClick(v)
         }
     }
+
     companion object {
         const val CLICK_INTERVAL = 1000
     }
@@ -31,3 +32,5 @@ fun Fragment?.openHyperlink(hyperlink: String) {
     val intent = Intent(Intent.ACTION_VIEW, Uri.parse(hyperlink))
     this?.startActivity(intent)
 }
+
+const val POST_KEY = "POST"

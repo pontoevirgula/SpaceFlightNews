@@ -1,7 +1,6 @@
 package com.chslcompany.spaceflightnews.ui.detail
 
 import android.os.Bundle
-import android.text.util.Linkify
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,11 +9,11 @@ import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.chslcompany.spaceflightnews.R
 import com.chslcompany.spaceflightnews.core.DateUtil
+import com.chslcompany.spaceflightnews.core.POST_KEY
 import com.chslcompany.spaceflightnews.core.openHyperlink
 import com.chslcompany.spaceflightnews.core.setOnSingleClickListener
 import com.chslcompany.spaceflightnews.data.model.Post
 import com.chslcompany.spaceflightnews.databinding.FragmentPostDetailBinding
-import com.chslcompany.spaceflightnews.ui.home.HomeFragment
 
 class PostDetailFragment : Fragment() {
 
@@ -28,7 +27,7 @@ class PostDetailFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        itemPost = arguments?.getParcelable<Post>(HomeFragment.POST_KEY) as Post
+        itemPost = arguments?.getParcelable<Post>(POST_KEY) as Post
 
         populateViews(itemPost)
 

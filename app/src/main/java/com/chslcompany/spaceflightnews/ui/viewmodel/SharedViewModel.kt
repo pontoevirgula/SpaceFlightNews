@@ -1,4 +1,4 @@
-package com.chslcompany.spaceflightnews.ui.home
+package com.chslcompany.spaceflightnews.ui.viewmodel
 
 import androidx.lifecycle.*
 import com.chslcompany.spaceflightnews.core.CategoryEnum
@@ -9,11 +9,10 @@ import com.chslcompany.spaceflightnews.data.model.Search
 import com.chslcompany.spaceflightnews.domain.usecase.GetLatestPostsUseCase
 import com.chslcompany.spaceflightnews.domain.usecase.GetPostTitleContainsUseCase
 import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.collect
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 
-class HomeViewModel(
+class SharedViewModel(
     private val latestPostUseCase: GetLatestPostsUseCase,
     private val searchTitleUseCase: GetPostTitleContainsUseCase
     ) : ViewModel(),
@@ -36,10 +35,6 @@ class HomeViewModel(
     }
     val category : LiveData<CategoryEnum>
         get() = _category
-
-    init {
-        fetchPosts(Search(_category.value?.toString() ?: CategoryEnum.ARTICLES.value))
-    }
 
     fun fetchPosts(search: Search) {
         viewModelScope.launch {

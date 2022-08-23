@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/mobile_navigation"
+    app:startDestination="@+id/navigation_news">
+
+    <fragment
+        android:id="@+id/navigation_news"
+        android:name="com.chslcompany.spaceflightnews.ui.fragments.NewsFragment"
+        android:label="@string/news"
+        tools:layout="@layout/fragment_news">
+        <action
+            android:id="@+id/action_newsFragment_to_detailFragment"
+            app:destination="@id/detailFragmentDest" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_blogs"
+        android:name="com.chslcompany.spaceflightnews.ui.fragments.BlogFragment"
+        android:label="@string/blogs"
+        tools:layout="@layout/fragment_blogs">
+        <action
+            android:id="@+id/action_blogFragment_to_detailFragment"
+            app:destination="@id/detailFragmentDest" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/navigation_report"
+        android:name="com.chslcompany.spaceflightnews.ui.fragments.ReportFragment"
+        android:label="@string/reports"
+        tools:layout="@layout/fragment_report">
+        <action
+            android:id="@+id/action_reportFragment_to_detailFragment"
+            app:destination="@id/detailFragmentDest" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/detailFragmentDest"
+        android:name="com.chslcompany.spaceflightnews.ui.detail.PostDetailFragment"
+        android:label="Detalhes"
+        tools:layout="@layout/fragment_post_detail" />
+</navigation>
