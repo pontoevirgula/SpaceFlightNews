@@ -16,7 +16,7 @@
         <activity
             android:name=".ui.activity.MainActivity"
             android:exported="true"
-            android:label="@string/title_activity_main2"
+            android:label="@string/title_activity_main"
             android:theme="@style/Theme.SpaceFlightNews2.NoActionBar" />
 
         <activity
