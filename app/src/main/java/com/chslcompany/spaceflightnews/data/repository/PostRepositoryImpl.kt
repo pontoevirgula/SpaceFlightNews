@@ -3,6 +3,7 @@ package com.chslcompany.spaceflightnews.data.repository
 import com.chslcompany.spaceflightnews.core.RemoteException
 import com.chslcompany.spaceflightnews.data.model.Launch
 import com.chslcompany.spaceflightnews.data.model.Post
+import com.chslcompany.spaceflightnews.data.network.toPostListModel
 import com.chslcompany.spaceflightnews.data.service.SpaceFlightNewsService
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
@@ -12,7 +13,7 @@ class PostRepositoryImpl(private val service: SpaceFlightNewsService) : PostRepo
 
     override suspend fun listPosts(category: String): Flow<List<Post>> = flow {
         try{
-            emit(service.getListPost(category))
+            emit(service.getListPost(category).toPostListModel())
         }catch (ex : HttpException){
             throw RemoteException("Can't connect API")
         }
@@ -23,7 +24,7 @@ class PostRepositoryImpl(private val service: SpaceFlightNewsService) : PostRepo
         titleContains: String?
     ): Flow<List<Post>> = flow {
         try {
-            emit(service.getListPostTitleContains(category, titleContains))
+            emit(service.getListPostTitleContains(category, titleContains).toPostListModel())
         } catch (ex: HttpException) {
             throw RemoteException("Unable to retrieve posts")
         }

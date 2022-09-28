@@ -108,9 +108,9 @@ class HomeFragment : Fragment() {
         lifecycle.addObserver(networkUtil)
 
         networkUtil.networkAvailableStateFlow.asLiveData()
-            .observe(this, { networkState ->
+            .observe(viewLifecycleOwner) { networkState ->
                 handleNetworkState(networkState)
-            })
+            }
     }
 
     private fun handleNetworkState(networkState: NetworkState?) {
