@@ -9,8 +9,6 @@ w
 Gapp/src/test/java/com/chslcompany/service/SpaceFlightNewsServiceTest.kt,f\7\f76a42644dde9e5d12f2003d8520a4f760abe902
 t
 Dapp/src/test/java/com/chslcompany/spaceflightnews/InitDIComponent.kt,2\5\254731a5fe61b2a3d04f21c328bb957dde5fdaa4
-u
-Eapp/src/main/java/com/chslcompany/spaceflightnews/core/BaseUseCase.kt,6\c\6c2eed1311920c36408890db9a553f560efb4ac5
 :
 
 .gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302

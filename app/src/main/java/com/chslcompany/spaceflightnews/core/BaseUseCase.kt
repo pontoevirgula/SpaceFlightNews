@@ -5,18 +5,18 @@ import java.lang.UnsupportedOperationException
 
 abstract class BaseUseCase<Param, Source> {
 
-    abstract suspend fun execute(param: Param): Flow<Source>
+    abstract fun execute(param: Param): Flow<Source>
 
-    suspend operator fun invoke(param: Param) = execute(param)
+    operator fun invoke(param: Param) = execute(param)
 
     abstract class NoParam<Source> : BaseUseCase<Nothing, Source>() {
 
-        abstract suspend fun execute(): Flow<Source>
+        abstract fun execute(): Flow<Source>
 
-        final override suspend fun execute(param: Nothing): Flow<Source> {
+        final override fun execute(param: Nothing): Flow<Source> {
             throw UnsupportedOperationException()
         }
 
-        suspend operator fun invoke() = execute()
+        operator fun invoke() = execute()
     }
 }
