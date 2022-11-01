@@ -1,14 +1,13 @@
 package com.chslcompany.spaceflightnews.domain
 
 import com.chslcompany.spaceflightnews.core.CategoryEnum
-import com.chslcompany.spaceflightnews.data.model.Search
+import com.chslcompany.spaceflightnews.data.entities.model.Search
 import com.chslcompany.spaceflightnews.domain.usecase.GetPostTitleContainsUseCase
 import com.chslcompany.spaceflightnews.setupTestAppComponent
 import junit.framework.Assert.assertTrue
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.runBlocking
 import org.junit.AfterClass
-import org.junit.Assert
 import org.junit.BeforeClass
 import org.junit.Test
 import org.koin.core.context.stopKoin

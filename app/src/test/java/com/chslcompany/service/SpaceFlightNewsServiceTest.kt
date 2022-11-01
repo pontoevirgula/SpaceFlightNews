@@ -1,8 +1,6 @@
 package com.chslcompany.service
 
 import com.chslcompany.spaceflightnews.core.CategoryEnum
-import com.chslcompany.spaceflightnews.data.model.Launch
-import com.chslcompany.spaceflightnews.data.model.Post
 import com.chslcompany.spaceflightnews.data.service.SpaceFlightNewsService
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory

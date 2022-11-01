@@ -4,8 +4,8 @@ import androidx.lifecycle.*
 import com.chslcompany.spaceflightnews.core.CategoryEnum
 import com.chslcompany.spaceflightnews.core.PostState
 import com.chslcompany.spaceflightnews.core.RemoteException
-import com.chslcompany.spaceflightnews.data.model.Post
-import com.chslcompany.spaceflightnews.data.model.Search
+import com.chslcompany.spaceflightnews.data.entities.model.Post
+import com.chslcompany.spaceflightnews.data.entities.model.Search
 import com.chslcompany.spaceflightnews.domain.usecase.GetLatestPostsUseCase
 import com.chslcompany.spaceflightnews.domain.usecase.GetPostTitleContainsUseCase
 import kotlinx.coroutines.flow.catch

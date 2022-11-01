@@ -1,4 +1,4 @@
-package com.chslcompany.spaceflightnews.data.model
+package com.chslcompany.spaceflightnews.data.entities.model
 
 data class Post(
     val id: Int,

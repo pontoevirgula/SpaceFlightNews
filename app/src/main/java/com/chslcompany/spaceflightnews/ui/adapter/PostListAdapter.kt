@@ -5,7 +5,7 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.chslcompany.spaceflightnews.data.model.Post
+import com.chslcompany.spaceflightnews.data.entities.model.Post
 import com.chslcompany.spaceflightnews.databinding.ItemPostAdapterBinding
 
 class PostListAdapter : ListAdapter<Post, PostListAdapter.PostViewHolder>(PostListAdapter) {

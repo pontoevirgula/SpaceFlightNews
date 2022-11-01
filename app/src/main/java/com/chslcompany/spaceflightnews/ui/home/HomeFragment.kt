@@ -13,7 +13,7 @@ import com.chslcompany.spaceflightnews.core.CategoryEnum
 import com.chslcompany.spaceflightnews.core.NetworkState
 import com.chslcompany.spaceflightnews.core.NetworkUtil
 import com.chslcompany.spaceflightnews.core.PostState
-import com.chslcompany.spaceflightnews.data.model.Search
+import com.chslcompany.spaceflightnews.data.entities.model.Search
 import com.chslcompany.spaceflightnews.databinding.HomeFragmentBinding
 import com.chslcompany.spaceflightnews.ui.adapter.PostListAdapter
 import com.google.android.material.snackbar.Snackbar

@@ -1,6 +1,6 @@
 package com.chslcompany.spaceflightnews.data.repository
 
-import com.chslcompany.spaceflightnews.data.network.PostDTO
+import com.chslcompany.spaceflightnews.data.entities.network.PostDTO
 import com.chslcompany.spaceflightnews.data.service.SpaceFlightNewsService
 
 class PostRepositoryImpl(private val service: SpaceFlightNewsService) : PostRepository {

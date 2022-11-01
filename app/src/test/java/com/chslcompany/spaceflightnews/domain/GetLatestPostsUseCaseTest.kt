@@ -1,8 +1,8 @@
 package com.chslcompany.spaceflightnews.domain
 
 import com.chslcompany.spaceflightnews.core.CategoryEnum
-import com.chslcompany.spaceflightnews.data.model.Post
-import com.chslcompany.spaceflightnews.data.model.Search
+import com.chslcompany.spaceflightnews.data.entities.model.Post
+import com.chslcompany.spaceflightnews.data.entities.model.Search
 import com.chslcompany.spaceflightnews.domain.usecase.GetLatestPostsUseCase
 import com.chslcompany.spaceflightnews.setupTestAppComponent
 import kotlinx.coroutines.flow.Flow

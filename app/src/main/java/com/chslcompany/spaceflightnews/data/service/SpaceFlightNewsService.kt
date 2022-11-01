@@ -1,7 +1,6 @@
 package com.chslcompany.spaceflightnews.data.service
 
-import com.chslcompany.spaceflightnews.data.model.Post
-import com.chslcompany.spaceflightnews.data.network.PostDTO
+import com.chslcompany.spaceflightnews.data.entities.network.PostDTO
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
