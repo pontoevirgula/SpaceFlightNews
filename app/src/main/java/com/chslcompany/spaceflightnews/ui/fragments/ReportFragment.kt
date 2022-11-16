@@ -34,7 +34,7 @@ class ReportFragment : BaseFragment() {
         savedInstanceState: Bundle?
     ): View {
         initBinding(binding,viewLifecycleOwner)
-        viewModel.fetchPosts(Search(CategoryEnum.BLOGS.value))
+        viewModel.fetchPosts(Search(CategoryEnum.REPORTS.value))
         initRecyclerView(binding.recyclerReport, adapter)
         observeSnackBarLiveData(binding)
         observePostStateLiveData(adapter)
