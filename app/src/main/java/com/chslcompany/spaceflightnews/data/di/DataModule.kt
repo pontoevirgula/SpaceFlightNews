@@ -1,5 +1,6 @@
 package com.chslcompany.spaceflightnews.data.di
 
+import com.chslcompany.spaceflightnews.data.db.PostDatabase
 import com.chslcompany.spaceflightnews.data.repository.PostRepository
 import com.chslcompany.spaceflightnews.data.repository.PostRepositoryImpl
 import com.chslcompany.spaceflightnews.data.service.SpaceFlightNewsService
@@ -7,6 +8,7 @@ import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.loadKoinModules
 import org.koin.core.module.Module
 import org.koin.dsl.module
@@ -18,10 +20,14 @@ object DataModule {
 
     private const val URL_BASE = "https://api.spaceflightnewsapi.net/v3/"
 
-    fun load() = loadKoinModules(networkModule() + repositoryModule())
+    fun load() = loadKoinModules(networkModule() + repositoryModule() + daoModule())
+
+    private fun daoModule() = module {
+        single { PostDatabase.getInstance(androidContext()).dao }
+    }
 
     private fun repositoryModule() = module {
-        single<PostRepository> { PostRepositoryImpl(get()) }
+        single<PostRepository> { PostRepositoryImpl(get(),get()) }
     }
 
     private fun networkModule(): Module {

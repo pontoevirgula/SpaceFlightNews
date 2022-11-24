@@ -69,7 +69,7 @@ class PostDatabaseTest : DbTest(){
     }
 
     @Test
-    fun deve_LimparDatabase_AoInvocarClearDb() {
+    fun should_CleanDatabase_WhenInvokeClearDb() {
         lateinit var result: List<PostDb>
         createPostForTest()
         runBlocking {
@@ -78,11 +78,6 @@ class PostDatabaseTest : DbTest(){
             result = dao.listPosts().first()
         }
         assertTrue(result.isEmpty())
-    }
-
-    @Test
-    fun verify_IfTwoPlusTwo_IsNotEqualFive(){
-        assertTrue(2+2 != 5)
     }
 
 }

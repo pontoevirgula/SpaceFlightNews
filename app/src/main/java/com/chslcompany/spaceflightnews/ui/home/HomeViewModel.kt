@@ -54,8 +54,13 @@ class HomeViewModel(
                         _snackBar.value = this.message
                     }
                 }
-                .collect { posts ->
-                    _listPost.value = PostState.Success(posts)
+                .collect {
+                    it.data?.let { posts ->
+                        _listPost.value = PostState.Success(posts)
+                    }
+                    it.error?.let { error ->
+                        _snackBar.value = error.message
+                    }
                     _category.value = enumValueOf<CategoryEnum>(search.type.uppercase())
                 }
         }

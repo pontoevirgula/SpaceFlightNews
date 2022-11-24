@@ -1,6 +1,6 @@
 package com.chslcompany.spaceflightnews.data.entities.network
 
-import com.chslcompany.spaceflightnews.data.entities.model.Launch
+import com.chslcompany.spaceflightnews.data.entities.db.PostDb
 import com.chslcompany.spaceflightnews.data.entities.model.Post
 
 data class PostDTO(
@@ -24,27 +24,29 @@ data class PostDTO(
             updatedAt = updatedAt,
             launches = launches.toLaunchListModel()
         )
+
+    fun toPostDbModel(): PostDb =
+        PostDb(
+            id = id,
+            title = title,
+            url = url,
+            imageUrl = imageUrl,
+            summary = summary,
+            publishedAt = publishedAt,
+            updatedAt = updatedAt,
+            launches = launches.toLaunchDbList()
+        )
 }
+
+
 fun List<PostDTO>.toPostListModel() : List<Post> =
     this.map {
         it.toPostModel()
     }
 
-
-
-data class LaunchDTO(
-    val id: String,
-    val provider: String
-) {
-    fun toLaunchModel(): Launch =
-        Launch(
-            id = id,
-            provider = provider
-        )
-}
-
-fun List<LaunchDTO>.toLaunchListModel(): List<Launch> =
+fun List<PostDTO>.toPostDbList() : List<PostDb> =
     this.map {
-        it.toLaunchModel()
+        it.toPostDbModel()
     }
+
 

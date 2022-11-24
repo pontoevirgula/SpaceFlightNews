@@ -3,7 +3,6 @@ package com.chslcompany.spaceflightnews
 import android.icu.lang.UCharacter.GraphemeClusterBreak.T
 import com.chslcompany.spaceflightnews.data.repository.PostRepository
 import com.chslcompany.spaceflightnews.data.repository.PostRepositoryImpl
-import com.chslcompany.spaceflightnews.domain.GetPostTitleContainsUseCaseTest
 import com.chslcompany.spaceflightnews.domain.usecase.GetLatestPostsUseCase
 import com.chslcompany.spaceflightnews.domain.usecase.GetPostTitleContainsUseCase
 import com.squareup.moshi.Moshi
@@ -28,5 +27,5 @@ fun configureDataModulesForTest(baseUrl: String) = module {
             .create(T::class.java)
     }
 
-    single<PostRepository> { PostRepositoryImpl(get()) }
+    single<PostRepository> { PostRepositoryImpl(get(),get()) }
 }
