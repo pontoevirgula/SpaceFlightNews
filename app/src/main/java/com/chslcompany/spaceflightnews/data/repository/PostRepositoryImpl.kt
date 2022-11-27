@@ -8,24 +8,43 @@ import com.chslcompany.spaceflightnews.data.entities.model.Post
 import com.chslcompany.spaceflightnews.data.entities.network.PostDTO
 import com.chslcompany.spaceflightnews.data.entities.network.toPostDbList
 import com.chslcompany.spaceflightnews.data.service.SpaceFlightNewsService
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.map
 
 class PostRepositoryImpl(
     private val service: SpaceFlightNewsService,
     private val dao: PostDao
 ) : PostRepository {
 
-    override suspend fun listPosts(category: String): Resource<List<Post>> =
-        networkBoundResources(category)
+    override suspend fun listPosts(category: String): Flow<Resource<List<Post>>> =
+        networkBoundResources(
+            category = category,
+            query = {
+                dao.listPosts().map {
+                    it.sortedByDescending { postDb ->
+                        postDb.publishedAt
+                    }.toPostListModel()
+                }
+            },
+            service = {
+                service.getListPost(category)
+            },
+            saveFetchResult = { listPostDTO ->
+                dao.clearDb()
+                dao.saveAll(listPostDTO.toPostDbList())
+            },
+            onError = {
+                RemoteException("Falha ao atualizar as noticias. Exibindo o conteudo antigo...")
+            }
+        )
 
 //    override suspend fun listPostTitleContains(
 //        category: String,
 //        titleContains: String?
 //    ): Resource<List<Post>> =
 //        service.getListPostTitleContains(category,titleContains)
-
-    private suspend fun listPostDTO(category: String): List<PostDTO> =
-        service.getListPost(category)
 
     override suspend fun listPostTitleContains(
         category: String,
@@ -34,24 +53,41 @@ class PostRepositoryImpl(
         service.getListPostTitleContains(category,titleContains)
 
 
-    private suspend fun networkBoundResources(category: String): Resource<List<Post>> {
-        var dbData = dao.listPosts().first()
-        try {
-            with(listPostDTO(category)) {
-                if (this.isNotEmpty()) {
-                    dao.clearDb()
-                    dao.saveAll(this.toPostDbList())
-                    dbData = dao.listPosts().first()
+    private inline fun  <ResultType, RequestType> networkBoundResources(
+        category: String,
+        crossinline query : () -> Flow<ResultType>,
+        crossinline service : suspend (String) -> RequestType,
+        crossinline saveFetchResult : suspend (RequestType) -> Unit,
+        crossinline onError : (Throwable) -> Throwable
+    ) : Flow<Resource<ResultType>> =
+        flow {
+            var dbData = query().first()
+            try {
+                if (service(category) != EMPTY_LIST) {
+                    saveFetchResult(service(category))
+                    dbData = query().first()
+                    emit(Resource.Success(dbData))
+                } else {
+                    emit(
+                        Resource.Failure(
+                            data = dbData,
+                            error = onError(RemoteException("Lista vazia"))
+                        )
+                    )
                 }
+            } catch (e: Exception) {
+                emit(
+                    Resource.Failure(
+                        data = dbData,
+                        error = onError(e)
+                    )
+                )
             }
-        } catch (e: Exception) {
-            val failure = RemoteException("Unable to retrieve posts. Displaying cache content")
-            return Resource.Failure(data = dbData.toPostListModel(), error = failure)
         }
 
-        return Resource.Success(dbData.toPostListModel())
+    companion object{
+        private const val EMPTY_LIST = ""
     }
-
 }
 
 

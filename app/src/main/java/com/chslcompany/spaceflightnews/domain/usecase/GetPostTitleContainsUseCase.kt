@@ -13,7 +13,7 @@ import retrofit2.HttpException
 class GetPostTitleContainsUseCase(private val repository: PostRepository) :
     BaseUseCase<Search, List<Post>>() {
 
-    override fun execute(param: Search): Flow<List<Post>> = flow {
+    override suspend fun execute(param: Search): Flow<List<Post>> = flow {
         try {
             emit(repository.listPostTitleContains(
                 category = param.type,
