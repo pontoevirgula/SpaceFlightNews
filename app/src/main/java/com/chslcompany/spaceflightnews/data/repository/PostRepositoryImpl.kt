@@ -5,7 +5,6 @@ import com.chslcompany.spaceflightnews.core.Resource
 import com.chslcompany.spaceflightnews.data.db.PostDao
 import com.chslcompany.spaceflightnews.data.entities.db.toPostListModel
 import com.chslcompany.spaceflightnews.data.entities.model.Post
-import com.chslcompany.spaceflightnews.data.entities.network.PostDTO
 import com.chslcompany.spaceflightnews.data.entities.network.toPostDbList
 import com.chslcompany.spaceflightnews.data.service.SpaceFlightNewsService
 import kotlinx.coroutines.flow.Flow
@@ -20,7 +19,6 @@ class PostRepositoryImpl(
 
     override suspend fun listPosts(category: String): Flow<Resource<List<Post>>> =
         networkBoundResources(
-            category = category,
             query = {
                 dao.listPosts().map {
                     it.sortedByDescending { postDb ->
@@ -40,31 +38,42 @@ class PostRepositoryImpl(
             }
         )
 
-//    override suspend fun listPostTitleContains(
-//        category: String,
-//        titleContains: String?
-//    ): Resource<List<Post>> =
-//        service.getListPostTitleContains(category,titleContains)
-
     override suspend fun listPostTitleContains(
         category: String,
         titleContains: String?
-    ): List<PostDTO> =
-        service.getListPostTitleContains(category,titleContains)
+    ): Flow<Resource<List<Post>>> =
+        networkBoundResources(
+            query = {
+                dao.listPosts().map {
+                    it.sortedByDescending { postDb ->
+                        postDb.publishedAt
+                    }.toPostListModel()
+                }
+            },
+            service = {
+                service.getListPostTitleContains(category, titleContains)
+            },
+            saveFetchResult = { dtoList ->
+                dao.clearDb()
+                dao.saveAll(dtoList.toPostDbList())
+            },
+            onError = {
+                RemoteException("Não foi possível carregar lista")
+            }
+        )
 
 
     private inline fun  <ResultType, RequestType> networkBoundResources(
-        category: String,
         crossinline query : () -> Flow<ResultType>,
-        crossinline service : suspend (String) -> RequestType,
+        crossinline service : suspend () -> RequestType,
         crossinline saveFetchResult : suspend (RequestType) -> Unit,
         crossinline onError : (Throwable) -> Throwable
     ) : Flow<Resource<ResultType>> =
         flow {
             var dbData = query().first()
             try {
-                if (service(category) != EMPTY_LIST) {
-                    saveFetchResult(service(category))
+                if (service() != EMPTY_LIST) {
+                    saveFetchResult(service())
                     dbData = query().first()
                     emit(Resource.Success(dbData))
                 } else {
