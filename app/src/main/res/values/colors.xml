@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
     <color name="dark_grey">#FF000715</color>
     <color name="medium_gray">#FF23303B</color>
+    <color name="medium_gray2">#FF4F5D73</color>
     <color name="gradient_cherry_medium">#FFd92949</color>
     <color name="gradient_cherry_dark">#FFA00022</color>
     <color name="gradient_blue_medium">#FF025373</color>
