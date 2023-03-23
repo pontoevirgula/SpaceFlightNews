@@ -1,7 +1,7 @@
 package com.chslcompany.service
 
-import com.chslcompany.spaceflightnews.core.CategoryEnum
-import com.chslcompany.spaceflightnews.data.service.SpaceFlightNewsService
+import com.chslcompany.spacenews.core.CategoryEnum
+import com.chslcompany.spacenews.data.service.SpaceFlightNewsService
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import kotlinx.coroutines.runBlocking

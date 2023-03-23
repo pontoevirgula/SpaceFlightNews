@@ -6,7 +6,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.chslcompany.spaceflightnews.ui.home.HomeViewModel" />
+            type="com.chslcompany.spacenews.ui.home.HomeViewModel" />
         <import type="android.view.View"/>
     </data>
 

@@ -1,8 +1,8 @@
 package com.chslcompany
 
-import com.chslcompany.spaceflightnews.data.entities.model.Post
-import com.chslcompany.spaceflightnews.data.entities.network.LaunchDTO
-import com.chslcompany.spaceflightnews.data.entities.network.PostDTO
+import com.chslcompany.spacenews.data.entities.model.Post
+import com.chslcompany.spacenews.data.entities.network.LaunchDTO
+import com.chslcompany.spacenews.data.entities.network.PostDTO
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4

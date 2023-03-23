@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.chslcompany.spaceflightnews.ui.home.HomeFragment"
+        android:name="com.chslcompany.spacenews.ui.home.HomeFragment"
         android:label="home_fragment"
         tools:layout="@layout/home_fragment" />
 </navigation>
